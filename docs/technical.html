@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technical Details — J Thrust</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=2">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="./index.html"><span class="logo-mark">JT</span> J Thrust</a>
+      <div class="nav-links">
+        <a href="./index.html">Home</a>
+        <a class="active" href="./technical.html">Technical Details</a>
+        <a href="./run.html">Run Instructions</a>
+        <a href="./about.html">About Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Technical details</p>
+      <h1>How it works</h1>
+      <p class="subtitle">
+        J Thrust is a local-first FastAPI and React prototype. The core triage logic is rule-based
+        for safety and explainability. AI is used only as a constrained explanation layer.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>System flow</h2>
+      <div class="step-list">
+        <div class="step">
+          <div>
+            <h3>CSV upload</h3>
+            <p>The user uploads a CSV from the included demo datasets. The backend accepts the file and reads it with Python/pandas.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Validation</h3>
+            <p>The backend checks that required fields exist, including variant ID, gene, HGVS, current classification, evidence snapshots, and routing signals.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Rule-based evidence routing</h3>
+            <p>The engine checks fields such as splice suspicion, ancestry data gap, affected-relative availability, literature level, and functional evidence relevance.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Priority and actor assignment</h3>
+            <p>The backend assigns priority, primary evidence path, secondary paths, and the suggested lab/research actor.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>Frontend report</h3>
+            <p>The React frontend displays the ranked queue, source snapshots, single-variant report, evidence map, and internal lab/research note.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h3>AI-assisted explanation</h3>
+            <p>OpenAI is called only after the rule-based result exists. It explains the already-structured output and is not allowed to classify variants or make recommendations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Backend stack</h2>
+      <ul>
+        <li><code>FastAPI</code> for backend routes.</li>
+        <li><code>pandas</code> for CSV parsing.</li>
+        <li><code>uvicorn</code> for local development server.</li>
+        <li><code>openai</code> Python SDK for optional explanation generation.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Frontend stack</h2>
+      <ul>
+        <li><code>React</code> for the user interface.</li>
+        <li><code>Vite</code> for local development.</li>
+        <li><code>Axios</code> for backend API calls.</li>
+        <li>Custom CSS for the visual system.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Safety boundary</h2>
+      <p>
+        The system does not diagnose, classify variants, determine benign/pathogenic status, or make
+        medical-management recommendations. It only routes uncertain variants toward possible missing-evidence paths.
+      </p>
+    </section>
+
+    <footer>
+      J Thrust - Technical Details.
+    </footer>
+  </main>
+</body>
+</html>

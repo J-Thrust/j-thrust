@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Run Instructions — J Thrust</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=2">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="./index.html"><span class="logo-mark">JT</span> J Thrust</a>
+      <div class="nav-links">
+        <a href="./index.html">Home</a>
+        <a href="./technical.html">Technical Details</a>
+        <a class="active" href="./run.html">Run Instructions</a>
+        <a href="./about.html">About Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Setup guide</p>
+      <h1>Run J Thrust locally</h1>
+      <p class="subtitle">
+        Download the ZIP, extract it, start the backend in one terminal, and start the frontend in another.
+      </p>
+
+      <div class="actions">
+        <a class="button" href="downloads/j-thrust-source.zip" download>Download ZIP</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Mac setup</h2>
+
+      <h3>1. Extract the ZIP</h3>
+      <pre><code>cd ~/Downloads/j-thrust</code></pre>
+
+      <h3>2. Start the backend</h3>
+      <pre><code>cd backend
+python3 -m venv venv
+source venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000</code></pre>
+
+      <h3>3. Start the frontend</h3>
+      <p>Open a second Terminal window:</p>
+      <pre><code>cd ~/Downloads/j-thrust/frontend
+npm install
+npm run dev</code></pre>
+
+      <h3>4. Open the app</h3>
+      <pre><code>http://localhost:5173</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Windows setup</h2>
+
+      <h3>1. Extract the ZIP</h3>
+      <p>Open PowerShell in the extracted <code>j-thrust</code> folder.</p>
+
+      <h3>2. Start the backend</h3>
+      <pre><code>cd backend
+py -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000</code></pre>
+
+      <p>If PowerShell blocks activation, run:</p>
+      <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+
+      <h3>3. Start the frontend</h3>
+      <p>Open a second PowerShell window:</p>
+      <pre><code>cd frontend
+npm install
+npm run dev</code></pre>
+
+      <h3>4. Open the app</h3>
+      <pre><code>http://localhost:5173</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Optional OpenAI setup</h2>
+      <p>
+        J Thrust runs without an OpenAI key. Without a key, the AI explanation button falls back to a safe local template.
+      </p>
+
+      <h3>Mac</h3>
+      <pre><code>export OPENAI_API_KEY="your_api_key_here"
+export OPENAI_MODEL="gpt-4.1-mini"
+uvicorn main:app --reload --port 8000</code></pre>
+
+      <h3>Windows PowerShell</h3>
+      <pre><code>$env:OPENAI_API_KEY="your_api_key_here"
+$env:OPENAI_MODEL="gpt-4.1-mini"
+uvicorn main:app --reload --port 8000</code></pre>
+
+      <div class="notice">
+        Never commit your API key into GitHub. Set it only as an environment variable.
+      </div>
+    </section>
+
+    <footer>
+      J Thrust - Run Instructions.
+    </footer>
+  </main>
+</body>
+</html>

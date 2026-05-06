@@ -4,198 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>J Thrust Evidence Router</title>
-<link rel="icon" type="image/svg+xml" href="./favicon.svg?v=2">
-  <style>
-    :root {
-      --bg: #080b12;
-      --panel: rgba(18, 25, 40, 0.88);
-      --text: #edf3ff;
-      --muted: #9aa8bd;
-      --accent: #8bb7ff;
-      --accent2: #c6a6ff;
-      --border: rgba(148, 163, 184, 0.22);
-      --yellow: #ffd98a;
-      --green: #90f2b0;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: "Avenir Next", "SF Pro Display", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 12% 6%, rgba(139, 183, 255, 0.18), transparent 28%),
-        radial-gradient(circle at 88% 4%, rgba(198, 166, 255, 0.16), transparent 30%),
-        linear-gradient(180deg, #080b12 0%, #0a0f19 54%, #070a10 100%);
-      min-height: 100vh;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 72%);
-    }
-
-    .wrap {
-      position: relative;
-      width: min(1100px, 92vw);
-      margin: 0 auto;
-      padding: 54px 0 80px;
-    }
-
-    .hero, .card {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: 30px;
-      box-shadow: 0 28px 90px rgba(0,0,0,0.42);
-      backdrop-filter: blur(18px);
-    }
-
-    .hero {
-      padding: 44px;
-      overflow: hidden;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 12px;
-      font-weight: 900;
-      margin: 0 0 12px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(50px, 8vw, 86px);
-      line-height: 0.92;
-      letter-spacing: -0.075em;
-      background: linear-gradient(135deg, #ffffff, #bcd5ff 48%, #d8b4fe);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: 26px;
-      letter-spacing: -0.045em;
-    }
-
-    h3 {
-      margin: 24px 0 10px;
-    }
-
-    p, li {
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .subtitle {
-      max-width: 760px;
-      color: #c7d3e6;
-      font-size: 21px;
-      line-height: 1.55;
-      margin: 22px 0 0;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    a.button {
-      text-decoration: none;
-      border-radius: 999px;
-      padding: 13px 18px;
-      font-weight: 900;
-      color: #07101f;
-      background: linear-gradient(135deg, rgba(139,183,255,0.98), rgba(198,166,255,0.95));
-      box-shadow: 0 18px 42px rgba(139,183,255,0.24);
-    }
-
-    a.button.secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      box-shadow: none;
-    }
-
-    .card {
-      padding: 26px;
-      margin-top: 24px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    code {
-      background: rgba(8,12,20,0.9);
-      color: #cfe1ff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2px 6px;
-      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.92em;
-    }
-
-    pre {
-      overflow-x: auto;
-      background: rgba(8,12,20,0.92);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-      color: #d8e3f4;
-      line-height: 1.5;
-    }
-
-    .notice {
-      margin-top: 22px;
-      border: 1px solid rgba(255,217,138,0.28);
-      border-radius: 22px;
-      background: rgba(255,217,138,0.08);
-      padding: 18px;
-      color: #ffe6ad;
-      line-height: 1.6;
-    }
-
-    footer {
-      color: #708095;
-      margin-top: 34px;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=2">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="./index.html"><span class="logo-mark">JT</span> J Thrust</a>
+      <div class="nav-links">
+        <a class="active" href="./index.html">Home</a>
+        <a href="./technical.html">Technical Details</a>
+        <a href="./run.html">Run Instructions</a>
+        <a href="./about.html">About Us</a>
+      </div>
+    </div>
+  </nav>
+
   <main class="wrap">
     <section class="hero">
       <p class="eyebrow">Local lab/research prototype</p>
       <h1>J Thrust</h1>
       <p class="subtitle">
-     Making Cancer research flow smoothly, so your life can too.
-
-      Built for Researchers, made for the world.
+        Making cancer research flow smoothly, so your life can too.
+        Built for researchers, made for the world.
       </p>
 
       <div class="actions">
         <a class="button" href="downloads/j-thrust-source.zip" download>Download J Thrust ZIP</a>
-        <a class="button secondary" href="#instructions">Run Instructions</a>
+        <a class="button secondary" href="./run.html">Run Instructions</a>
       </div>
 
       <div class="notice">
@@ -205,131 +41,58 @@
     </section>
 
     <section class="grid">
-      <div class="card">
-        <h2>What it does</h2>
-        <ul>
-          <li>Uploads curated CSV datasets of public VUS examples.</li>
-          <li>Ranks variants using transparent rules.</li>
-          <li>Routes variants to missing-evidence paths.</li>
-          <li>Assigns next lab/research actors.</li>
-          <li>Shows evidence snapshots and simple evidence maps.</li>
-          <li>Adds constrained AI-assisted explanations.</li>
-        </ul>
+      <div class="kicker-card problem">
+        <p class="eyebrow">The problem</p>
+        <h2>Variant uncertainty slows research teams down.</h2>
+        <p>
+          Labs and research teams often face uncertain genetic variants with scattered evidence,
+          unclear next steps, and limited time. The result is not just a data problem. It is a workflow
+          problem: which variants should be reviewed first, what evidence is missing, and who should
+          work on the next step?
+        </p>
       </div>
 
-      <div class="card">
-        <h2>What it does not do</h2>
-        <ul>
-          <li>Does not reclassify variants.</li>
-          <li>Does not use real patient data.</li>
-          <li>Does not replace variant curators or lab experts.</li>
-          <li>Does not make medical recommendations.</li>
-        </ul>
+      <div class="kicker-card solution">
+        <p class="eyebrow">Our solution</p>
+        <h2>A routing system for missing evidence.</h2>
+        <p>
+          J Thrust turns a structured CSV of uncertain variant examples into a ranked evidence-resolution
+          queue. It routes each variant toward the most useful missing-evidence path, assigns a suggested
+          lab/research actor, shows evidence snapshots, and generates a safe AI-assisted explanation.
+        </p>
       </div>
     </section>
 
-    <section class="card" id="instructions">
-      <h2>Mac setup</h2>
-
-      <h3>1. Extract the ZIP</h3>
-      <p>Download the ZIP and extract it. Then open Terminal:</p>
-
-      <pre><code>cd ~/Downloads/j-thrust</code></pre>
-
-      <h3>2. Start the backend</h3>
-
-      <pre><code>cd backend
-python3 -m venv venv
-source venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000</code></pre>
-
-      <p>Backend health check:</p>
-
-      <pre><code>http://127.0.0.1:8000/api/health</code></pre>
-
-      <h3>3. Start the frontend</h3>
-      <p>Open a second Terminal window:</p>
-
-      <pre><code>cd ~/Downloads/j-thrust/frontend
-npm install
-npm run dev</code></pre>
-
-      <p>Open:</p>
-
-      <pre><code>http://localhost:5173</code></pre>
+    <section class="card">
+      <h2>What J Thrust does</h2>
+      <div class="grid">
+        <div class="kicker-card">
+          <strong>Uploads CSV datasets</strong>
+          <p>Accepts curated variant datasets and validates the required columns.</p>
+        </div>
+        <div class="kicker-card">
+          <strong>Ranks uncertain variants</strong>
+          <p>Uses transparent rules to prioritize variants by evidence-resolution opportunity.</p>
+        </div>
+        <div class="kicker-card">
+          <strong>Routes action items</strong>
+          <p>Maps each variant to RNA/splicing, family, population, literature, functional, or reanalysis paths.</p>
+        </div>
+        <div class="kicker-card">
+          <strong>Explains safely</strong>
+          <p>Uses constrained AI only to explain already-structured routing results.</p>
+        </div>
+      </div>
     </section>
 
     <section class="card">
-      <h2>Windows setup</h2>
-
-      <h3>1. Extract the ZIP</h3>
-      <p>Extract the ZIP. Then open PowerShell in the extracted <code>j-thrust</code> folder.</p>
-
-      <h3>2. Start the backend</h3>
-
-      <pre><code>cd backend
-py -m venv venv
-.\venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000</code></pre>
-
-      <p>If PowerShell blocks activation, run:</p>
-
-      <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
-
-      <h3>3. Start the frontend</h3>
-      <p>Open a second PowerShell window:</p>
-
-      <pre><code>cd frontend
-npm install
-npm run dev</code></pre>
-
-      <p>Open:</p>
-
-      <pre><code>http://localhost:5173</code></pre>
-    </section>
-
-    <section class="card">
-      <h2>Using the app</h2>
-      <ol>
-        <li>Start backend and frontend.</li>
-        <li>Open <code>http://localhost:5173</code>.</li>
-        <li>Upload one of the CSV files from the <code>data</code> folder.</li>
-        <li>Click <code>View</code> on a variant.</li>
-        <li>Inspect the evidence map and AI-assisted explanation.</li>
-      </ol>
-
-      <p>Included datasets:</p>
-      <ul>
-        <li><code>demo_variants.csv</code></li>
-        <li><code>dataset_splicing.csv</code></li>
-        <li><code>dataset_population_gap.csv</code></li>
-        <li><code>dataset_mixed_validation.csv</code></li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Optional OpenAI setup</h2>
+      <h2>Download and run locally</h2>
       <p>
-        The app runs without an OpenAI key. Without a key, the AI explanation button falls back to
-        a safe local template.
+        Download the prototype ZIP, extract it, and follow the separate setup page for Mac or Windows.
       </p>
-
-      <h3>Bash (Mac)</h3>
-      <pre><code>export OPENAI_API_KEY="your_api_key_here"
-export OPENAI_MODEL="gpt-4.1-mini"
-uvicorn main:app --reload --port 8000</code></pre>
-
-      <h3>PowerShell (Windows)</h3>
-      <pre><code>$env:OPENAI_API_KEY="your_api_key_here"
-$env:OPENAI_MODEL="gpt-4.1-mini"
-uvicorn main:app --reload --port 8000</code></pre>
-
-      <div class="notice">
-        Never commit your API key into GitHub. Set it only as an environment variable.
+      <div class="actions">
+        <a class="button" href="downloads/j-thrust-source.zip" download>Download ZIP</a>
+        <a class="button secondary" href="./run.html">Open Run Instructions</a>
       </div>
     </section>
 
